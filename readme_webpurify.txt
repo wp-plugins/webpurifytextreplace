@@ -4,9 +4,9 @@ Authors: WebPurify
 Contact: comments@webpurify.com
 
 == Overview ==
-The WebPurify Plugin allows your to use the powerful WebPurify Profanity Filter API to stop prfanity from amking onto your wordpress blog.
+The WebPurify Plugin allows your to use the powerful WebPurify Profanity Filter API to stop prfanity from making onto your wordpress blog.
 
-You can create custom survey templates similar to WordPress templates. You can also use SurveyGizmo to post data to other API's (SalesForce.com, Constant Contact, etc) through the HTTP Post question type, or send email auto-responders or email invites to survey takers.
+This plugin will replace profane words in comments before they are inserted into teh database. So it will NOT work on legacy comments.
 
 This plugin will replace every character of any words deemed profanity by WebPurify with a "*" symbol. 
 
