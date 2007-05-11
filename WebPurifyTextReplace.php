@@ -2,8 +2,8 @@
 /*
 Plugin Name: WebPurifyTextReplace
 Plugin URI: http://www.webpurify.com/wp-plugin.php
-Description: Filters user comments for profanity using the WebPurify API. Replaces each letter of profane words with a "*". Please register for a key at: <a target="new" href="http://www.webpurify.com/apply.php">http://www.webpurify.com/apply.php</a>
-Version: 1.0
+Description: Filters user comments for profanity BEFORE they are inserted into the database using the WebPurify API. All Legacy comments (ie all comments posted before the time you starting using this API&nbsp;will not be checked)  Replaces each letter of profane words with a "*". Please register for a key at: <a target="new" href="http://www.webpurify.com/apply.php">http://www.webpurify.com/apply.php</a>
+Version: 1.5
 Author: WebPurify
 Author URI: http://www.webpurify.com
 */
@@ -29,9 +29,15 @@ function webpurify_options_page() {
 	add_options_page('WebPurify Options', 'WebPurify', 9, '?page=webpurify/WebPurifyTextReplace-options.php');
 }
 
-function WebPurifyTextReplace($content) {
+function WebPurifyTextReplace($commentID) {
+    global $wpdb;
 
     $API_KEY = get_option('webpurify_userkey');
+
+    $table_name = $wpdb->prefix . "comments";
+    $getcomment = "SELECT comment_content from ".$table_name." where comment_ID = ".$commentID.";";
+    $content = $wpdb->get_var($getcomment);
+
 
     $params = array(
       'api_key' => $API_KEY,
@@ -55,7 +61,9 @@ function WebPurifyTextReplace($content) {
     $rsp = file_get_contents($url);
     $ar = ParseXML($rsp);
 
-    return $ar;
+    $update_comment = "UPDATE ".$table_name." set comment_content = '".mysql_real_escape_string($ar)."' where comment_ID = ".$commentID.";";
+    $results = $wpdb->query($update_comment);
+
 }
 
 function ParseXML($xml) {
@@ -79,5 +87,6 @@ return $cleancontent;
 }
 
 add_action('admin_head', 'webpurify_options_page');
-add_filter('comment_text','WebPurifyTextReplace');
+add_action('comment_post','WebPurifyTextReplace');
+//add_filter('comment_text','WebPurifyTextReplace');
 ?>
