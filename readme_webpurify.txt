@@ -3,6 +3,8 @@ Authors: WebPurify
 
 Contact: support@webpurify.com
 
+Tested up to: 2.9
+
 == Overview ==
 The WebPurify Plugin allows your to use the powerful WebPurify Profanity Filter API to stop prfanity from making onto your wordpress blog.
 

@@ -58,32 +58,12 @@ function WebPurifyTextReplace($commentID) {
 #
     $url = "http://www.webpurify.com/services/rest/?".implode('&', $encoded_params);
 
-    $rsp = file_get_contents($url);
-    $ar = ParseXML($rsp);
+	$response = simplexml_load_file($url,'SimpleXMLElement', LIBXML_NOCDATA);
+    $ar = $response->text;
 
     $update_comment = "UPDATE ".$table_name." set comment_content = '".mysql_escape_string($ar)."' where comment_ID = ".$commentID.";";
     $results = $wpdb->query($update_comment);
 
-}
-
-function ParseXML($xml) {
-// Gets XML in a string and parses it into an array.
-
-// Create the parser object
-$parser = xml_parser_create();
-
-xml_parse_into_struct($parser, trim($xml), &$structure, &$index);
-xml_parser_free($parser);
-
-// Hack up the XML and put it into the array
-foreach($structure as $s)
-{
-      if ($s["tag"] == "TEXT") {
-           $cleancontent = $s['value'];
-      }
-}
-
-return $cleancontent;
 }
 
 add_action('admin_menu', 'webpurify_options_page');
