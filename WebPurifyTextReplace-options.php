@@ -3,7 +3,7 @@
 Plugin Name: WebPurifyTextReplace
 Plugin URI: http://www.webpurify.com/wp-plugin.php
 Description: Filters user comments for profanity BEFORE they are inserted into the database using the WebPurify API. All Legacy comments (ie all comments posted before the time you starting using this API&nbsp;will not be checked)  Replaces each letter of profane words with a "*". Please register for a key at: <a target="new" href="http://www.webpurify.com/apply.php">http://www.webpurify.com/apply.php</a>
-Version: 1.5
+Version: 2.0
 Author: WebPurify
 Author URI: http://www.webpurify.com
 */
