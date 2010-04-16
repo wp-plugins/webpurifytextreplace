@@ -1,8 +1,8 @@
 === WebPurify for WordPress ===
+Contributors: webpurify
 Authors: WebPurify
-
+Tags: comments, profanity, filter
 Contact: support@webpurify.com
-
 Tested up to: 2.9
 
 == Overview ==
