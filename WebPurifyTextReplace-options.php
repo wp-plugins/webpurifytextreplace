@@ -1,8 +1,14 @@
 <?php
 /*
-Plugin Name: WebPurifyTextReplace
+Plugin Name: WebPurify Profanity Filter
 Plugin URI: http://www.webpurify.com/wp-plugin.php
-Description: Filters user comments for profanity BEFORE they are inserted into the database using the WebPurify API. All Legacy comments (ie all comments posted before the time you starting using this API&nbsp;will not be checked)  Replaces each letter of profane words with a "*". Please register for a key at: <a target="new" href="http://www.webpurify.com/apply.php">http://www.webpurify.com/apply.php</a>
+Description: The WebPurify Plugin allows you to use the powerful WebPurify Profanity Filter API to stop profanity from making it onto your wordpress blog.
+
+This plugin will replace profane words in comments before they are inserted into teh database. So it will NOT work on legacy comments.
+
+This plugin will replace every character of any words deemed profanity by WebPurify with a "*" symbol. 
+
+To purchase a license key please visit: http://www.webpurify.com/wp-plugin.php  
 Version: 2.0
 Author: WebPurify
 Author URI: http://www.webpurify.com
