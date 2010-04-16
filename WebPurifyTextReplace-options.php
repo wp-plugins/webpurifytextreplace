@@ -26,7 +26,7 @@ Author URI: http://www.webpurify.com
 
 
 function webpurify_options_page() {
-	add_options_page('WebPurify Options', 'WebPurify', 9, 'webpurify/WebPurifyTextReplace.php');
+	add_options_page('WebPurify Options', 'WebPurify', 9, 'webpurifytextreplace/WebPurifyTextReplace.php');
 }
 
 function WebPurifyTextReplace($commentID) {
