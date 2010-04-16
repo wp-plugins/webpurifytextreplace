@@ -75,5 +75,4 @@ function WebPurifyTextReplace($commentID) {
 
 add_action('admin_menu', 'webpurify_options_page');
 add_action('comment_post','WebPurifyTextReplace');
-//add_filter('comment_text','WebPurifyTextReplace');
 ?>

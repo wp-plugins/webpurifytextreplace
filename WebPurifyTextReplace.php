@@ -25,7 +25,7 @@ $userkey = get_option('webpurify_userkey');
 		<fieldset class="options">
 			    <?php _e('Enter WebPurify API Key', 'WebPurifyTextReplace') ?>: <input type="text" name="webpurify_key" value="<?php echo $userkey ?>" />
                 <br/><br />
-                <p class="submit"><input type="submit" name="store_key" value="<?php _e('Save API Key &amp; Activate Plugin', 'WebPurifyTextReplace') ?>" ></p>
+                <p class="submit"> <input type="submit" name="store_key" value="<?php _e('Save API Key &amp; Activate Plugin', 'WebPurifyTextReplace') ?>" ></p>
 		</fieldset>
 	</form> 
 </div>
