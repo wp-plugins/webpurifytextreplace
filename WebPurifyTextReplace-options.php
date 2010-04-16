@@ -24,9 +24,10 @@ Author URI: http://www.webpurify.com
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+add_action('admin_menu', 'webpurify_options_page');
 
 function webpurify_options_page() {
-	add_options_page('WebPurify Options', 'WebPurify', 9, 'webpurifytextreplace/WebPurifyTextReplace.php');
+	add_options_page('WebPurify Options', 'WebPurify', 'manage_options','webpurifytextreplace/WebPurifyTextReplace.php');
 }
 
 function WebPurifyTextReplace($commentID) {

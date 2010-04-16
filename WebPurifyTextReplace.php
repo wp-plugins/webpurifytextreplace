@@ -20,7 +20,7 @@ $userkey = get_option('webpurify_userkey');
 <div class="wrap"> 
 	<h2><?php _e('Configure: WebPurify Plugin', 'WebPurifyTextReplace') ?></h2>
 	<p><?php _e('In order to use this plugin you must enter your "WebPurify API Key."<br/><br/><br/>Apply for a FREE WebPurify API at: <a href="http://www.webpurify.com/apply.php"  target=_blank >www.webpurify.com/apply.php</a>', 'WebPurifyTextReplace') ?></strong></p>
-	<form name="form1" method="post" action="<?php echo(get_option('siteurl') . '/wp-admin/admin.php?page=webpurify/WebPurifyTextReplace.php'); ?>">
+	<form name="form1" method="post" action="<?php echo(get_option('siteurl') . '/wp-admin/admin.php?page=webpurifytextreplace/WebPurifyTextReplace.php'); ?>">
 
 		<fieldset class="options">
 			    <?php _e('Enter WebPurify API Key', 'WebPurifyTextReplace') ?>: <input type="text" name="webpurify_key" value="<?php echo $userkey ?>" />
