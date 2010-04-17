@@ -15,7 +15,7 @@ This plugin will replace profanity in comments before they are inserted into the
 
 This plugin will replace every character of any words deemed profane by WebPurify with a "*" symbol. 
 
-To purchase a license key please visit http://www.webpurify.com/wp-plugin.php
+Visit our website to purchase a license key.
 
 == Installation ==
 1. Unzip the file and then upload the entire "webpurify" folder to wp-content/plugins directory. Make sure to add the whole folder, not the individual files.
@@ -26,6 +26,3 @@ You can get an API key by goign to: http://www.webpurify.com/
 
 == Support ==
 Have any problems, questions, or ideas? Please contact us at support@webpurify.com
-
-
-
