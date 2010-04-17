@@ -1,7 +1,7 @@
 === WebPurify Profanity Filter ===
 Contributors: webpurify
 Authors: WebPurify
-Tags: comments, profanity, filter, filtered, options, swearing, post, admin
+Tags: comments, profanity, filter, filtered, swearing, post, admin, BuddyPress
 Contact: support@webpurify.com
 Tested up to: 2.9
 Requires at least: 2.9
