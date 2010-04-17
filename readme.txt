@@ -7,7 +7,7 @@ Tested up to: 2.9
 Requires at least: 2.9
 Stable tag: trunk
 
-Uses the powerful WebPurify Profanity Filter API to stop profanity in comments.2
+Uses the powerful WebPurify Profanity Filter API to stop profanity in comments.
 
 == Description ==
 
