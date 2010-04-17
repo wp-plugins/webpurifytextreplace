@@ -2,8 +2,7 @@
 /*
 Plugin Name: WebPurify Profanity Filter
 Plugin URI: http://www.webpurify.com/wp-plugin.php
-Description: The WebPurify Plugin allows you to use the powerful WebPurify Profanity Filter API to stop profanity from making it onto your wordpress blog.
-Overview: This plugin will replace profane words in comments before they are inserted into the database. So it will NOT work on legacy comments.
+Description: The WebPurify Plugin allows you to use the powerful WebPurify Profanity Filter API to stop profanity from making it onto your wordpress blog. This plugin will replace profane words in comments before they are inserted into the database. So it will NOT work on legacy comments.
 
 This plugin will replace every character of any profanity with a "*" symbol. 
 <br>
