@@ -1,4 +1,4 @@
-=== WebPurify for WordPress ===
+=== WebPurify Profanity Filter ===
 Contributors: webpurify
 Authors: WebPurify
 Tags: comments, profanity, filter
