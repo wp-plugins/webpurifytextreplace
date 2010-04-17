@@ -1,13 +1,13 @@
 === WebPurify Profanity Filter ===
 Contributors: webpurify
 Authors: WebPurify
-Tags: comments, profanity, filter
+Tags: comments, profanity, filter, filtered, options, swearing, post, admin
 Contact: support@webpurify.com
 Tested up to: 2.9
 Requires at least: 2.9
 Stable tag: trunk
 
-Uses the powerful WebPurify Profanity Filter API to stop profanity in comments.
+Uses the powerful WebPurify Profanity Filter API to stop profanity in comments.2
 
 == Description ==
 
