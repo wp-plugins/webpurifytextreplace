@@ -7,13 +7,13 @@ Tested up to: 2.9
 Requires at least: 2.9
 Stable tag: trunk
 
-Uses the powerful WebPurify Profanity Filter API to stop profanity in comments.
+Uses the powerful WebPurify&trade; Profanity Filter API to stop profanity in comments.
 
 == Description ==
 
-This plugin will replace every character of any words deemed profane by WebPurify with a "*" symbol.
+WebPurify&trade; is an accurate and efficient profanity filter web service. With WebPurify, the profanity list updates automatically to maximize accuracy. In addition to scanning for profanity, WebPurify allows the user to add their personal list of words to filter.
 
-This plugin will replace profanity in comments before they are inserted into the database. So it will NOT work on legacy comments.
+Our WordPress plugin will replace every character of any words deemed profane by WebPurify with a "*" symbol.
 
 You can purchase a license key at <a href="http://www.webpurify.com/wp-plugin.php" target="_blank">our site</a>.
 
