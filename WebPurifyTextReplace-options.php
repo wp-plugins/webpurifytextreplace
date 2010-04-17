@@ -5,6 +5,7 @@ Plugin URI: http://www.webpurify.com/wp-plugin.php
 Version: 2.0
 Author: WebPurify
 Author URI: http://www.webpurify.com
+Description: Uses the powerful WebPurify Profanity Filter API to stop profanity in comments.
 */
 /*  Copyright 2009  WebPurify  (email : support@webpurify.com)
 
