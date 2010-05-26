@@ -116,6 +116,7 @@ function bp_wpurify_init() {
 	add_action('group_forum_topic_text_before_save','WebPurifyReplaceBP');
 	add_action('bp_activity_post_update_content','WebPurifyReplaceBP');
 	add_action('bp_activity_post_comment_content','WebPurifyReplaceBP');
+	add_action('group_forum_post_text_before_save','WebPurifyReplaceBP');
 }
 // End Bud
 
