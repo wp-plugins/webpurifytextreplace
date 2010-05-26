@@ -2,12 +2,12 @@
 /*
 Plugin Name: WebPurify Profanity Filter
 Plugin URI: http://www.webpurify.com/wp-plugin.php
-Version: 2.0
+Version: 2.5
 Author: WebPurify
 Author URI: http://www.webpurify.com
 Description: Uses the powerful WebPurify Profanity Filter API to stop profanity in comments.
 */
-/*  Copyright 2009  WebPurify  (email : support@webpurify.com)
+/*  Copyright 2010  WebPurify  (email : support@webpurify.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

@@ -1,7 +1,7 @@
 <?php
 /*
 please see http://www.webpurify.com/wp-plugin.php for more information.
-*/
+ */
 
 load_plugin_textdomain('WebPurifyTextReplace');
 
