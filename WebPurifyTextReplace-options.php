@@ -35,22 +35,21 @@ function WebPurifyTextReplace($commentID) {
     global $wpdb;
 
     $API_KEY = get_option('webpurify_userkey');
+   	$lang = get_option('webpurify_lang');
 
     $table_name = $wpdb->prefix . "comments";
     $getcomment = "SELECT comment_content from ".$table_name." where comment_ID = ".$commentID.";";
     $content = $wpdb->get_var($getcomment);
 
-
     $params = array(
       'api_key' => $API_KEY,
       'method' => 'webpurify.live.replace',
       'text' => $content,
-      'replacesymbol' => '*'
+      'replacesymbol' => '*',
+      'lang' => $lang
     );
 
-
     $encoded_params = array();
-
     foreach ($params as $k => $v){
         $encoded_params[] = urlencode($k).'='.urlencode($v);
     }
@@ -72,7 +71,7 @@ function WebPurifyTextReplace($commentID) {
 // For buddypress
 function WebPurifyReplaceBP($content,$a = "", $b="", $c="") {
 	$API_KEY = get_option('webpurify_userkey');
-		
+	$lang = get_option('webpurify_lang');		
 		
 	// build array push each on to array
 	$con = array();
@@ -83,7 +82,8 @@ function WebPurifyReplaceBP($content,$a = "", $b="", $c="") {
       'api_key' => $API_KEY,
       'method' => 'webpurify.live.replace',
       'text' => $content,
-      'replacesymbol' => '*'
+      'replacesymbol' => '*',
+      'lang' => $lang
     );
  //   echo 'here!'
  //   exit;
