@@ -13,7 +13,9 @@ Uses the powerful WebPurify&trade; Profanity Filter API to stop profanity in com
 
 WebPurify&trade; is an accurate and efficient profanity filter web service. With WebPurify, the profanity list updates automatically to maximize accuracy. In addition to scanning for profanity, WebPurify allows the user to add their personal list of words to filter.
 
-Our WordPress plugin will replace every character of any words deemed profane by WebPurify with a "*" symbol and work with BuddyPress as well.
+Our WordPress plugin will replace every character of any words deemed profane by WebPurify with a "*" symbol by default. You may change the replacement character in the settings panel. 
+
+This plugin works with BuddyPress.
 
 You can purchase a license key at <a href="http://www.webpurify.com/wp-plugin.php" target="_blank">our site</a>.
 
