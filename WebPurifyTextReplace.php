@@ -20,9 +20,22 @@ if(isset($_POST[webpurify_lang]))
       update_option('webpurify_lang',$_POST[webpurify_lang]);
 }
 
+if(isset($_POST[webpurify_r]))
+{
+	  if ($_POST[webpurify_r] == "") {
+	  	$_POST[webpurify_r] = "*";
+	  }
+      update_option('webpurify_r',$_POST[webpurify_r]);
+}
+
 
 $userkey = get_option('webpurify_userkey');
 $wplang = get_option('webpurify_lang');
+$repc = get_option('webpurify_r');
+
+if ($repc == "") {
+	$repc = "*";
+}
 ?>
 <div class="wrap"> 
 	<h2><?php _e('Configure: WebPurify Plugin', 'WebPurifyTextReplace') ?></h2>
@@ -33,7 +46,11 @@ $wplang = get_option('webpurify_lang');
 			    <?php _e('Enter WebPurify API Key', 'WebPurifyTextReplace') ?>: <input type="text" size="50" name="webpurify_key" value="<?php echo $userkey ?>" />
                 <br/><br />
                 Language Preference: <input type="radio" name="webpurify_lang" value="en" <? if ($wplang == "en" || !$wplang) { ?>checked<? } ?>> English <input type="radio" name="webpurify_lang" value="sp" <? if ($wplang == "sp") { ?>checked<? } ?>> Spanish <input type="radio" name="webpurify_lang" value="ar" <? if ($wplang == "ar") { ?>checked<? } ?>> Arabic
-                <p class="submit"> <input type="submit" name="store_key" value="<?php _e('Save API Key &amp; Activate Plugin', 'WebPurifyTextReplace') ?>" ></p>
+                <br/><br/>
+                
+                Replacement Character: <input type="text" size="1" name="webpurify_r" maxlength="1" value="<?php echo $repc?>">
+                
+                <p class="submit"> <input type="submit" name="store_key" value="<?php _e('Save Settings', 'WebPurifyTextReplace') ?>" ></p>
 		</fieldset>
 		
 		

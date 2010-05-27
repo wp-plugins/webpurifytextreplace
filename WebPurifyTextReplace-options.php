@@ -36,6 +36,7 @@ function WebPurifyTextReplace($commentID) {
 
     $API_KEY = get_option('webpurify_userkey');
    	$lang = get_option('webpurify_lang');
+   	$repc = get_option('webpurify_r');
 
     $table_name = $wpdb->prefix . "comments";
     $getcomment = "SELECT comment_content from ".$table_name." where comment_ID = ".$commentID.";";
@@ -45,7 +46,7 @@ function WebPurifyTextReplace($commentID) {
       'api_key' => $API_KEY,
       'method' => 'webpurify.live.replace',
       'text' => $content,
-      'replacesymbol' => '*',
+      'replacesymbol' => $repc,
       'lang' => $lang
     );
 
@@ -72,9 +73,7 @@ function WebPurifyTextReplace($commentID) {
 function WebPurifyReplaceBP($content,$a = "", $b="", $c="") {
 	$API_KEY = get_option('webpurify_userkey');
 	$lang = get_option('webpurify_lang');		
-		
-	// build array push each on to array
-	$con = array();
+   	$repc = get_option('webpurify_r');		
 
 		
 			
@@ -82,11 +81,9 @@ function WebPurifyReplaceBP($content,$a = "", $b="", $c="") {
       'api_key' => $API_KEY,
       'method' => 'webpurify.live.replace',
       'text' => $content,
-      'replacesymbol' => '*',
+      'replacesymbol' => $repc,
       'lang' => $lang
     );
- //   echo 'here!'
- //   exit;
     
    $encoded_params = array();
 
