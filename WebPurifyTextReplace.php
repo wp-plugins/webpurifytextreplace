@@ -33,10 +33,6 @@ if(isset($_POST[webpurify_r]))
 $userkey = get_option('webpurify_userkey');
 $wplang = get_option('webpurify_lang');
 $repc = get_option('webpurify_r');
-
-if ($repc == "") {
-	$repc = "*";
-}
 ?>
 <div class="wrap"> 
 	<h2><?php _e('Configure: WebPurify Plugin', 'WebPurifyTextReplace') ?></h2>
