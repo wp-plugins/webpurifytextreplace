@@ -47,7 +47,8 @@ function WebPurifyTextReplace($commentID) {
       'method' => 'webpurify.live.replace',
       'text' => $content,
       'replacesymbol' => $repc,
-      'lang' => $lang
+      'lang' => $lang,
+      'cdata' => 1
     );
 
     $encoded_params = array();
@@ -82,7 +83,8 @@ function WebPurifyReplaceBP($content,$a = "", $b="", $c="") {
       'method' => 'webpurify.live.replace',
       'text' => $content,
       'replacesymbol' => $repc,
-      'lang' => $lang
+      'lang' => $lang,
+      'cdata' => 1
     );
     
    $encoded_params = array();
