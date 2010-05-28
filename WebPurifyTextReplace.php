@@ -8,7 +8,8 @@ load_plugin_textdomain('WebPurifyTextReplace');
 // set paramters to default, if not exists
 
 add_option('webpurify_userkey', '');
-add_option('webpurify_lang', '');
+add_option('webpurify_lang','en');
+add_option('webpurify_r','*');
 
 if(isset($_POST[webpurify_key]))
 {
@@ -45,7 +46,7 @@ if ($repc == "") {
 		<fieldset class="options">
 			    <?php _e('Enter WebPurify API Key', 'WebPurifyTextReplace') ?>: <input type="text" size="50" name="webpurify_key" value="<?php echo $userkey ?>" />
                 <br/><br />
-                Language Preference: <input type="radio" name="webpurify_lang" value="en" <? if ($wplang == "en" || !$wplang) { ?>checked<? } ?>> English <input type="radio" name="webpurify_lang" value="sp" <? if ($wplang == "sp") { ?>checked<? } ?>> Spanish <input type="radio" name="webpurify_lang" value="ar" <? if ($wplang == "ar") { ?>checked<? } ?>> Arabic
+                Language Preference: <input type="radio" name="webpurify_lang" value="en" <?php if ($wplang == "en" || !$wplang) { ?>checked<?php } ?>> English <input type="radio" name="webpurify_lang" value="sp" <?php if ($wplang == "sp") { ?>checked<?php } ?>> Spanish <input type="radio" name="webpurify_lang" value="ar" <?php if ($wplang == "ar") { ?>checked<?php } ?>> Arabic
                 <br/><br/>
                 
                 Replacement Character: <input type="text" size="1" name="webpurify_r" maxlength="1" value="<?php echo $repc?>">
