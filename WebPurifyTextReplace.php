@@ -42,7 +42,7 @@ $repc = get_option('webpurify_r');
 		<fieldset class="options">
 			    <?php _e('Enter WebPurify API Key', 'WebPurifyTextReplace') ?>: <input type="text" size="50" name="webpurify_key" value="<?php echo $userkey ?>" />
                 <br/><br />
-                Language Preference: <input type="radio" name="webpurify_lang" value="en" <?php if ($wplang == "en" || !$wplang) { ?>checked<?php } ?>> English <input type="radio" name="webpurify_lang" value="sp" <?php if ($wplang == "sp") { ?>checked<?php } ?>> Spanish <input type="radio" name="webpurify_lang" value="ar" <?php if ($wplang == "ar") { ?>checked<?php } ?>> Arabic
+                Language Preference: <input type="radio" name="webpurify_lang" value="en" <?php if ($wplang == "en" || !$wplang) { ?>checked<?php } ?>> English <input type="radio" name="webpurify_lang" value="sp" <?php if ($wplang == "sp") { ?>checked<?php } ?>> Spanish <input type="radio" name="webpurify_lang" value="ar" <?php if ($wplang == "ar") { ?>checked<?php } ?>> Arabic <input type="radio" name="webpurify_lang" value="it" <?php if ($wplang == "it") { ?>checked<?php } ?>> Italian
                 <br/><br/>
                 
                 Replacement Character: <input type="text" size="1" name="webpurify_r" maxlength="1" value="<?php echo $repc?>">
