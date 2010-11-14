@@ -59,7 +59,7 @@ function WebPurifyTextReplace($commentID) {
 #
 # call the API and decode the response
 #
-    $url = "http://www.webpurify.com/services/rest/?".implode('&', $encoded_params);
+    $url = "http://api1.webpurify.com/services/rest/?".implode('&', $encoded_params);
 
 	$response = simplexml_load_file($url,'SimpleXMLElement', LIBXML_NOCDATA);
     $ar = $response->text;
@@ -96,7 +96,7 @@ function WebPurifyReplaceBP($content,$a = "", $b="", $c="") {
 #
 # call the API and decode the response
 #
-    $url = "http://www.webpurify.com/services/rest/?".implode('&', $encoded_params);
+    $url = "http://api1.webpurify.com/services/rest/?".implode('&', $encoded_params);
 
 	$response = simplexml_load_file($url,'SimpleXMLElement', LIBXML_NOCDATA);
     $ar = $response->text;    
