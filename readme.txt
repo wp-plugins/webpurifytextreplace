@@ -15,9 +15,9 @@ WebPurify&trade; is an accurate and efficient profanity filter web service. With
 
 Our WordPress plugin will replace every character of any words deemed profane by WebPurify with a "*" symbol and work with BuddyPress as well.
 
-Language Support for English, Spanish and Arabic.
+Language Support for English, Spanish, Arabic, Italian
 
-You can purchase a license key at <a href="http://www.webpurify.com/wp-plugin.php" target="_blank">our site</a>.
+You can purchase a license key at <a href="http://www.webpurify.com/plugins/wordpress/" target="_blank">our site</a>.
 
 We also provide 7 day trial licenses for free.
 

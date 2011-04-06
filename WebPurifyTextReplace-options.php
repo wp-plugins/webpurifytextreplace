@@ -48,7 +48,8 @@ function WebPurifyTextReplace($commentID) {
       'text' => $content,
       'replacesymbol' => $repc,
       'lang' => $lang,
-      'cdata' => 1
+      'cdata' => 1,
+      'plugin' => 'wp'
     );
 
     $encoded_params = array();
@@ -84,7 +85,8 @@ function WebPurifyReplaceBP($content,$a = "", $b="", $c="") {
       'text' => $content,
       'replacesymbol' => $repc,
       'lang' => $lang,
-      'cdata' => 1
+      'cdata' => 1,
+      'plugin' => 'wp'      
     );
     
    $encoded_params = array();
