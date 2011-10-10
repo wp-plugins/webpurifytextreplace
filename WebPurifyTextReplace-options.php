@@ -65,8 +65,10 @@ function WebPurifyTextReplace($commentID) {
 	$response = simplexml_load_file($url,'SimpleXMLElement', LIBXML_NOCDATA);
     $ar = $response->text;
 
-    $update_comment = "UPDATE ".$table_name." set comment_content = '".mysql_escape_string($ar)."' where comment_ID = ".$commentID.";";
-    $results = $wpdb->query($update_comment);
+	if ($ar != '') {
+    	$update_comment = "UPDATE ".$table_name." set comment_content = '".mysql_escape_string($ar)."' where comment_ID = ".$commentID.";";
+    	$results = $wpdb->query($update_comment);
+    }
 
 }
 
@@ -102,8 +104,11 @@ function WebPurifyReplaceBP($content,$a = "", $b="", $c="") {
 
 	$response = simplexml_load_file($url,'SimpleXMLElement', LIBXML_NOCDATA);
     $ar = $response->text;    
-   
-	return $ar;
+	if ($ar != '') {   
+		return $ar;
+	} else {
+		return $content;
+	}
 }
 
 function bp_wpurify_init() {
