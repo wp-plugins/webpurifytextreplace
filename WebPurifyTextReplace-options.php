@@ -39,7 +39,7 @@ function WebPurifyTextReplace($commentID) {
    	$repc = get_option('webpurify_r');
 
     $table_name = $wpdb->prefix . "comments";
-    $getcomment = "SELECT comment_content from ".$table_name." where comment_ID = ".$commentID.";";
+    $getcomment = "SELECT comment_content from ".$table_name." where comment_ID = ".$commentID;
     $content = $wpdb->get_var($getcomment);
 
     $params = array(
@@ -66,7 +66,7 @@ function WebPurifyTextReplace($commentID) {
     $ar = $response->text;
 
 	if ($ar != '') {
-    	$update_comment = "UPDATE ".$table_name." set comment_content = '".mysql_escape_string($ar)."' where comment_ID = ".$commentID.";";
+    	$update_comment = "UPDATE ".$table_name." set comment_content = '".mysql_escape_string($ar)."' where comment_ID = ".$commentID;
     	$results = $wpdb->query($update_comment);
     }
 
