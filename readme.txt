@@ -28,5 +28,7 @@ We also provide 7 day trial licenses for free.
 
 You can get an API key by goign to: http://www.webpurify.com/
 
+Please note this plug-in require SimpleXML extension to work properly.
+
 == Support ==
 Have any problems, questions, or ideas? Please contact us at support@webpurify.com

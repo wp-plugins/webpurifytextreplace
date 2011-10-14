@@ -24,110 +24,154 @@ Description: Uses the powerful WebPurify Profanity Filter API to stop profanity 
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-add_action( 'bp_init', 'bp_wpurify_init' );
-add_action('admin_menu', 'webpurify_options_page');
+// webpurify service url
+define( 'WEBPURIFY_URL', 'http://api1.webpurify.com/services/rest/?' );
 
-function webpurify_options_page() {
-	add_options_page('WebPurify Options', 'WebPurify', 'manage_options','webpurifytextreplace/WebPurifyTextReplace.php');
+// load plug-in translation domain
+load_plugin_textdomain( 'WebPurifyTextReplace' );
+
+// add wordpress actions
+add_action( 'admin_menu', 'webpurify_options_page' );
+add_action( 'comment_post', 'webpurify_comment_post' );
+
+// add buddypress actions
+if ( function_exists( 'bp_loaded' ) ) {
+    webpurify_bp_init();
 }
 
-function WebPurifyTextReplace($commentID) {
+/**
+ * Options page callback
+ */
+function webpurify_options_page() {
+    add_options_page( 'WebPurify Options', 'WebPurify', 'manage_options','webpurifytextreplace/WebPurifyTextReplace.php' );
+}
+
+/**
+ * Filter comment
+ * @global object $wpdb global instance of wpdb
+ * @param integer $commentID comment id
+ */
+function webpurify_comment_post($commentID) {
     global $wpdb;
 
-    $API_KEY = get_option('webpurify_userkey');
-   	$lang = get_option('webpurify_lang');
-   	$repc = get_option('webpurify_r');
+    $table_name = $wpdb->prefix . 'comments';
+    $getcomment = 'SELECT comment_content from ' . $table_name . ' where comment_ID = ' . (int)$commentID;
+    $content = $wpdb->get_var( $getcomment );
 
-    $table_name = $wpdb->prefix . "comments";
-    $getcomment = "SELECT comment_content from ".$table_name." where comment_ID = ".$commentID;
-    $content = $wpdb->get_var($getcomment);
+    $ar = webpurify_query( $content );
+
+    if ( !empty( $ar ) ) {
+    	$update_comment = 'UPDATE ' . $table_name . ' SET comment_content = \'' . mysql_escape_string( $ar ) . '\' where comment_ID = ' . (int)$commentID;
+    	$results = $wpdb->query( $update_comment );
+    }
+}
+
+/**
+ * Filter buddypress content
+ *
+ * @param string $content content to be checked
+ * @param mixed $a
+ * @param mixed $b
+ * @param mixed $c
+ * @return string filtered content
+ */
+function webpurify_bp_filter($content,$a = "", $b="", $c="") {
+    $ar = webpurify_query( $content );
+    return empty( $ar ) ? $content : $ar;
+}
+
+/**
+ * Query the web purify service
+ *
+ * @param string $content content to be filtered
+ * @return string filtered content
+ */
+function webpurify_query($content) {
+    $options = webpurify_get_options();
 
     $params = array(
-      'api_key' => $API_KEY,
-      'method' => 'webpurify.live.replace',
-      'text' => $content,
-      'replacesymbol' => $repc,
-      'lang' => $lang,
-      'cdata' => 1,
-      'plugin' => 'wp'
+        'api_key' => $options['userkey'],
+        'method' => 'webpurify.live.replace',
+        'text' => $content,
+        'replacesymbol' => $options['repc'],
+        'lang' => $options['wplang'],
+        'cdata' => 1,
+        'plugin' => 'wp'
     );
 
     $encoded_params = array();
-    foreach ($params as $k => $v){
-        $encoded_params[] = urlencode($k).'='.urlencode($v);
+
+    foreach ( $params as $k => $v ) {
+        $encoded_params[] = urlencode( $k ) . '=' . urlencode( $v );
     }
 
-#
-# call the API and decode the response
-#
-    $url = "http://api1.webpurify.com/services/rest/?".implode('&', $encoded_params);
-
-	$response = simplexml_load_file($url,'SimpleXMLElement', LIBXML_NOCDATA);
-    $ar = $response->text;
-
-	if ($ar != '') {
-    	$update_comment = "UPDATE ".$table_name." set comment_content = '".mysql_escape_string($ar)."' where comment_ID = ".$commentID;
-    	$results = $wpdb->query($update_comment);
-    }
-
+    $url = WEBPURIFY_URL . implode( '&', $encoded_params );
+    $response = simplexml_load_file( $url, 'SimpleXMLElement', LIBXML_NOCDATA );
+    return $response->text;
 }
 
+/**
+ * Init buddypress - hook to buddypress filters
+ */
+function webpurify_bp_init() {
+    $filter = 'webpurify_bp_filter';
 
-// For buddypress
-function WebPurifyReplaceBP($content,$a = "", $b="", $c="") {
-	$API_KEY = get_option('webpurify_userkey');
-	$lang = get_option('webpurify_lang');		
-   	$repc = get_option('webpurify_r');		
+    $tags = array(
+        'groups_activity_new_update_content',
+        'groups_activity_new_forum_post_content',
+        'groups_activity_new_forum_topic_content',
+        'bp_activity_comment_content',
+        'bp_activity_new_update_content',
+        'bp_blogs_activity_new_comment_content',
+        'group_forum_topic_title_before_save',
+        'group_forum_topic_text_before_save',
+        'bp_activity_post_update_content',
+        'bp_activity_post_comment_content',
+        'group_forum_post_text_before_save'
+    );
 
-		
-			
-    $params = array(
-      'api_key' => $API_KEY,
-      'method' => 'webpurify.live.replace',
-      'text' => $content,
-      'replacesymbol' => $repc,
-      'lang' => $lang,
-      'cdata' => 1,
-      'plugin' => 'wp'      
+    foreach( $tags as $tag ) {
+        add_filter( $tag, $filter );
+    }
+}
+
+/**
+ * Get this plug-in options, init if they don't exists.
+ * @return array associative array of options (userkey, wplang, repc)
+ */
+function webpurify_get_options() {
+    $options = array();
+    $defaults = array(
+        'userkey' => '',
+        'wplang' => 'en',
+        'repc' => '*'
+    );
+
+    $options['userkey'] = get_option( 'webpurify_userkey' );
+    $options['wplang'] = get_option( 'webpurify_lang' );
+    $options['repc'] = get_option( 'webpurify_r' );
+
+    foreach( $options as $option_name => $option_value ) {
+        if ( !$option_value && isset( $defaults[$option_name] ) ) {
+            add_option( $option_name, $defaults[$option_name] );
+            $options[$option_name] = $option_value;
+        }
+    }
+    
+    return $options;
+}
+
+/**
+ * Get available languages
+ * @return array associative array of languages in format language code => human name
+ */
+function webpurify_get_languages() {
+    $languages = array(
+        'en' => 'English',
+        'sp' => 'Spanish',
+        'ar' => 'Arabic',
+        'it' => 'Italian'
     );
     
-   $encoded_params = array();
-
-    foreach ($params as $k => $v){
-        $encoded_params[] = urlencode($k).'='.urlencode($v);
-    }
-
-#
-# call the API and decode the response
-#
-    $url = "http://api1.webpurify.com/services/rest/?".implode('&', $encoded_params);
-
-	$response = simplexml_load_file($url,'SimpleXMLElement', LIBXML_NOCDATA);
-    $ar = $response->text;    
-	if ($ar != '') {   
-		return $ar;
-	} else {
-		return $content;
-	}
+    return $languages;
 }
-
-function bp_wpurify_init() {
-	add_action('groups_activity_new_update_content','WebPurifyReplaceBP');
-	add_action('groups_activity_new_forum_post_content','WebPurifyReplaceBP');
-	add_action('groups_activity_new_forum_topic_content','WebPurifyReplaceBP');
-	add_action('bp_activity_comment_content','WebPurifyReplaceBP');
-	add_action('bp_activity_new_update_content','WebPurifyReplaceBP');
-	add_action('bp_blogs_activity_new_comment_content','WebPurifyReplaceBP');
-	add_action('group_forum_topic_title_before_save','WebPurifyReplaceBP');
-	add_action('group_forum_topic_text_before_save','WebPurifyReplaceBP');
-	add_action('bp_activity_post_update_content','WebPurifyReplaceBP');
-	add_action('bp_activity_post_comment_content','WebPurifyReplaceBP');
-	add_action('group_forum_post_text_before_save','WebPurifyReplaceBP');
-}
-// End Bud
-
-add_action('admin_menu', 'webpurify_options_page');
-add_action('comment_post','WebPurifyTextReplace');
-
-
-?>
