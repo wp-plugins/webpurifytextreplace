@@ -170,7 +170,9 @@ function webpurify_get_languages() {
         'en' => 'English',
         'sp' => 'Spanish',
         'ar' => 'Arabic',
-        'it' => 'Italian'
+        'it' => 'Italian',
+        'pt' => 'Portuguese BETA',
+        'cn' => 'Chinese BETA'
     );
     
     return $languages;
