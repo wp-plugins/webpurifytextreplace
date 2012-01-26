@@ -127,7 +127,9 @@ function webpurify_bp_init() {
         'group_forum_topic_text_before_save',
         'bp_activity_post_update_content',
         'bp_activity_post_comment_content',
-        'group_forum_post_text_before_save'
+        'group_forum_post_text_before_save',
+        'bp_get_activity_latest_update',
+        'bp_get_member_latest_update'
     );
 
     foreach( $tags as $tag ) {
