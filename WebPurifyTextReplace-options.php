@@ -170,11 +170,12 @@ function webpurify_get_options() {
 function webpurify_get_languages() {
     $languages = array(
         'en' => 'English',
-        'sp' => 'Spanish',
         'ar' => 'Arabic',
+        'zh' => 'Chinese',
+        'fr' => 'French',
         'it' => 'Italian',
-        'pt' => 'Portuguese BETA',
-        'cn' => 'Chinese BETA'
+        'pt' => 'Portuguese',
+        'sp' => 'Spanish',        
     );
     
     return $languages;
