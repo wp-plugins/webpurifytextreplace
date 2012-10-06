@@ -175,7 +175,9 @@ function webpurify_get_languages() {
         'fr' => 'French',
         'it' => 'Italian',
         'pt' => 'Portuguese',
+        'ru' => 'Russian',
         'sp' => 'Spanish',        
+        'th' => 'Thai'       
     );
     
     return $languages;
