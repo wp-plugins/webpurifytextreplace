@@ -32,14 +32,3 @@ Please note this plug-in require SimpleXML extension to work properly.
 
 == Support ==
 Have any problems, questions, or ideas? Please contact us at support@webpurify.com
-
-
-        'en' => 'English',
-        'ar' => 'Arabic',
-        'zh' => 'Chinese',
-        'fr' => 'French',
-        'it' => 'Italian',
-        'pt' => 'Portuguese',
-        'ru' => 'Russian',
-        'sp' => 'Spanish',        
-        'th' => 'Thai'
