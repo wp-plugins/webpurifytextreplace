@@ -3,7 +3,7 @@ Contributors: webpurify
 Authors: WebPurify
 Tags: comments, profanity, filter, filtered, swearing, post, admin, BuddyPress
 Contact: support@webpurify.com
-Tested up to: 3.5.2
+Tested up to: 3.8.1
 Requires at least: 2.9
 Stable tag: trunk
 
@@ -15,7 +15,7 @@ WebPurify&trade; is an accurate and efficient <a href="http://www.webpurify.com/
 
 Our WordPress plugin will replace every character of any words deemed profane by WebPurify with a "*" symbol and work with BuddyPress as well.
 
-Language Support for English, Arabic, Chinese, French, Italian, Portuguese, Russian, Spanish and Thai
+Language Support for English, Arabic, French, German, Hindi, Italian, Japanese, Portuguese, Russian, Spanish, Thai, Turkish, Chinese, Korean, Punjabi
 
 You can purchase a license key at <a href="http://www.webpurify.com/plugins/wordpress/" target="_blank">our site</a>.
 
