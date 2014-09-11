@@ -3,7 +3,7 @@ Contributors: webpurify
 Authors: WebPurify
 Tags: comments, profanity, filter, filtered, swearing, post, admin, BuddyPress
 Contact: support@webpurify.com
-Tested up to: 3.8.1
+Tested up to: 4.0
 Requires at least: 2.9
 Stable tag: trunk
 
