@@ -33,6 +33,7 @@ load_plugin_textdomain( 'WebPurifyTextReplace' );
 // add wordpress actions
 add_action( 'admin_menu', 'webpurify_options_page' );
 add_action( 'comment_post', 'webpurify_comment_post' );
+add_action( 'wp_insert_post', 'webpurify_post_post');
 
 // add buddypress actions
 if ( function_exists( 'bp_loaded' ) ) {
@@ -65,6 +66,27 @@ function webpurify_comment_post($commentID) {
     	$results = $wpdb->query( $update_comment );
     }
 }
+
+/**
+ * Filter post
+ * @global object $wpdb global instance of wpdb
+ * @param integer $postID post id
+ */
+function webpurify_post_post($postID) {
+    global $wpdb;
+
+    $table_name = $wpdb->prefix . 'posts';
+    $getpost = 'SELECT post_content from ' . $table_name . ' where ID = ' . (int)$postID;
+    $pcontent = $wpdb->get_var( $getpost );
+
+    $ar = webpurify_query( $pcontent );
+
+    if ( !empty( $ar ) ) {
+    	$update_post = 'UPDATE ' . $table_name . ' SET post_content = \'' . mysql_escape_string( $ar ) . '\' where ID = ' . (int)$postID;
+    	$results = $wpdb->query( $update_post );
+    }
+}
+
 
 /**
  * Filter buddypress content

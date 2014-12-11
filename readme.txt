@@ -3,7 +3,7 @@ Contributors: webpurify
 Authors: WebPurify
 Tags: comments, profanity, filter, filtered, swearing, post, admin, BuddyPress
 Contact: support@webpurify.com
-Tested up to: 4.0
+Tested up to: 4.0.1
 Requires at least: 2.9
 Stable tag: trunk
 
@@ -17,9 +17,9 @@ Our WordPress plugin will replace every character of any words deemed profane by
 
 Language Support for English, Arabic, French, German, Hindi, Italian, Japanese, Portuguese, Russian, Spanish, Thai, Turkish, Chinese, Korean, Punjabi
 
-You can purchase a license key at <a href="http://www.webpurify.com/plugins/wordpress/" target="_blank">our site</a>.
+You can purchase a license key at <a href="http://www.webpurify.com/cms-integrations/wordpress/" target="_blank">our site</a>.
 
-We also provide 7 day trial licenses for free.
+We also provide 14 day trial licenses for free.
 
 == Installation ==
 1. Unzip the file and then upload the entire "webpurify" folder to wp-content/plugins directory. Make sure to add the whole folder, not the individual files.
