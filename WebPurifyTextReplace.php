@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Admin options page. Please see http://www.webpurify.com/wp-plugin.php for more information.
+ * Admin options page. Please see http://www.webpurify.com/cms-integrations/wordpress/ for more information.
  */
 
 // detect option update
