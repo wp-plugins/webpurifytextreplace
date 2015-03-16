@@ -62,7 +62,7 @@ function webpurify_comment_post($commentID) {
     $ar = webpurify_query( $content );
 
     if ( !empty( $ar ) ) {
-    	$update_comment = 'UPDATE ' . $table_name . ' SET comment_content = \'' . mysql_escape_string( $ar ) . '\' where comment_ID = ' . (int)$commentID;
+    	$update_comment = 'UPDATE ' . $table_name . ' SET comment_content = \'' . mysql_real_escape_string( $ar ) . '\' where comment_ID = ' . (int)$commentID;
     	$results = $wpdb->query( $update_comment );
     }
 }
@@ -82,7 +82,7 @@ function webpurify_post_post($postID) {
     $ar = webpurify_query( $pcontent );
 
     if ( !empty( $ar ) ) {
-    	$update_post = 'UPDATE ' . $table_name . ' SET post_content = \'' . mysql_escape_string( $ar ) . '\' where ID = ' . (int)$postID;
+    	$update_post = 'UPDATE ' . $table_name . ' SET post_content = \'' . mysql_real_escape_string( $ar ) . '\' where ID = ' . (int)$postID;
     	$results = $wpdb->query( $update_post );
     }
 }
