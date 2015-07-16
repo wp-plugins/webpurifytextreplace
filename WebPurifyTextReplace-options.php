@@ -2,12 +2,12 @@
 /*
 Plugin Name: WebPurify Profanity Filter
 Plugin URI: http://www.webpurify.com/cms-integrations/wordpress/
-Version: 2.8
+Version: 2.9
 Author: WebPurify
 Author URI: http://www.webpurify.com
 Description: Uses the powerful WebPurify Profanity Filter API to stop profanity in comments.
 */
-/*  Copyright 2014  WebPurify  (email : support@webpurify.com)
+/*  Copyright 2015  WebPurify  (email : support@webpurify.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -36,9 +36,11 @@ add_action( 'comment_post', 'webpurify_comment_post' );
 add_action( 'wp_insert_post', 'webpurify_post_post');
 
 // add buddypress actions
-if ( function_exists( 'bp_loaded' ) ) {
+if ( function_exists( 'bp_loaded' ) || function_exists('bbp_loaded') ) {
     webpurify_bp_init();
 }
+
+
 
 /**
  * Options page callback
@@ -154,7 +156,27 @@ function webpurify_bp_init() {
         'bp_get_member_latest_update',
 		'bbp_get_reply_content',
         'bbp_get_topic_content',
-		'bbp_get_topic_title'
+		'bbp_get_topic_title',
+		'bbp_get_forum_title',
+		'bbp_get_forum_last_topic_title',
+		'bbp_get_forum_last_reply_title',
+		'bbp_get_topic_last_topic_title',
+		'bbp_get_current_user_name',
+		'bbp_get_reply_topic_title',
+		'bbp_get_reply_title',
+		'bbp_pre_anonymous_post_author_name',
+		'bbp_walker_dropdown_post_title',
+		'bbp_view_slug',
+		'bbp_user_slug',
+		'bbp_topic_widget_title',
+		'bbp_topic_tag_slug',
+		'bbp_topic_slug',
+		'bbp_topic_archive_slug',
+		'bbp_title',
+		'bbp_show_lead_topic',
+		'bbp_reply_slug',
+		'bbp_replies_widget_title',
+		'bbp_raw_title'
     );
 
 
